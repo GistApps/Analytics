@@ -1,0 +1,24 @@
+{
+    "name": "gist/analytics",
+    "description": "Connect to the Gist Analytics API",
+    "keywords": ["analytics", "gist", "api"],
+    "license": "DBAD",
+    "authors": [
+        {
+            "name": "Zac Fair",
+            "email": "zac@gist-apps.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		    "php": ">=7.4 | >8"
+    },
+	  "require-dev": {
+		    "phpunit/phpunit": "5.2.*"
+    },
+	  "autoload": {
+        "psr-4": {
+            "Gist\\Analytics\\": "src/"
+        }
+    }
+}
