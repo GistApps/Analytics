@@ -1,7 +1,4 @@
-Gist Analytics API Connection
-=========================
-
-# Gist Analytics Client
+# Gist Analytics API Connection
 
 The client class interacts with the Gist Analytics Platform to get and set data
 
