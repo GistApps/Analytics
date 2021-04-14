@@ -59,17 +59,14 @@ class Config implements ConfigInterface
   }
 
   /**
-  * Add the api key to the lookup request
-  * "apiKey"
-  *
-  * @param Array $params
+  * Add the url of Gist Analytics. Localhost is used for testing purposes
   *
   * @return Config
   */
-  public function baseUri(Array $params)
+  public function baseUri()
   {
 
-    if ($params['sandbox'] === true) {
+    if ($this->config['sandbox'] === true) {
       $this->config['base_uri'] = self::PRODUCTION_URL;
     } else {
       $this->config['base_uri'] = self::DEVELOPMENT_URL;

@@ -29,7 +29,7 @@ class ClientRequest implements ClientRequestInterface {
   *
   * @return GuzzleClient The guzzle http client used to make HTTP requests
   */
-  private function setupGuzzle()
+  public function setupGuzzle()
   {
 
     $this->guzzle = new GuzzleClient([
@@ -48,7 +48,7 @@ class ClientRequest implements ClientRequestInterface {
   * @throws ClientException
   * @throws RequestException
   */
-  protected function send()
+  public function send()
   {
 
     $response = null;
@@ -104,12 +104,12 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
-  protected function createRequest($requestType)
+  public function createRequest($requestType)
   {
 
     $this->query = [
       'params' => [],
-      'url'    => $this->config('base_uri'),
+      'url'    => $this->config['base_uri'],
       'type'   => $requestType === "insert" ? "POST" : "GET"
     ];
 
@@ -117,7 +117,7 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
-  protected function addName($name)
+  public function addName($name)
   {
 
     $this->query['params']['name'] = $name;
@@ -126,7 +126,7 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
-  protected function addValue($value)
+  public function addValue($value)
   {
 
     $this->query['params']['value'] = $value;
@@ -135,7 +135,7 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
-  protected function addQuery($query)
+  public function addQuery($query)
   {
 
     $this->query['params']['query'] = $query;
@@ -145,7 +145,7 @@ class ClientRequest implements ClientRequestInterface {
   }
 
 
-  protected function addMeta($meta)
+  public function addMeta($meta)
   {
 
     $this->query['params']['meta'] = $meta;
@@ -154,7 +154,7 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
-  protected function addStartDate($startDate)
+  public function addStartDate($startDate)
   {
 
     $this->query['params']['start_date'] = $startDate;
@@ -163,7 +163,7 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
-  protected function addEndDate($endDate)
+  public function addEndDate($endDate)
   {
 
     $this->query['params']['end_date'] = $endDate;
@@ -172,7 +172,7 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
-  protected function addFormat($format)
+  public function addFormat($format)
   {
 
     $this->query['params']['format'] = $format;

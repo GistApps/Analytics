@@ -14,6 +14,21 @@ interface ClientInterface
 {
 
   /**
+  * Configures the default options for a client.
+  *
+  * @param array $params
+  */
+  function configure(array $params);
+
+  /**
+  * Configures the default options for a client.
+  *
+  * @param string $option
+  * @return string $this->config
+  */
+  function getConfig(string $option);
+  
+  /**
   * Query method
   *
   * This methods allows you to query the Gist Analytics API with your account
@@ -52,6 +67,6 @@ interface ClientInterface
   * @return array
   */
   public function insert($name, $value, $meta = []);
-  
+
 
 }

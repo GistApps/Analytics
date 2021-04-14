@@ -13,12 +13,6 @@ use Psr\Http\Message\UriInterface;
 interface ClientRequestInterface
 {
 
-  /**
-  * Configures the default options for a client.
-  *
-  * @param array $params
-  */
-  function configure(array $params);
 
   /**
   * Set up the Guzzle Http Client
@@ -28,13 +22,6 @@ interface ClientRequestInterface
   */
   function setupGuzzle();
 
-  /**
-  * Configures the default options for a client.
-  *
-  * @param string $option
-  * @return string $this->config
-  */
-  function getConfig(string $option);
 
   /**
   * Send an HTTP request.

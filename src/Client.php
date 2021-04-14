@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Gist\Analytics;
 
 use Gist\Analytics\Config;
@@ -28,10 +30,13 @@ use Gist\Analytics\Config;
 class Client extends ClientRequest implements ClientInterface {
 
   /** @var Array $config Default request options */
-  private $config;
+  public $config;
 
   /** @var GuzzleClient $guzzle Set up guzzle http client */
   public $guzzle;
+
+  /** @var Array $queryQuery used in the client request */
+  public $query;
 
   /**
   * @param Array $config Client configuration settings.
@@ -49,7 +54,7 @@ class Client extends ClientRequest implements ClientInterface {
   *
   * @param array $params
   */
-  private function configure(array $params)
+  public function configure(array $params)
   {
 
     $config       = new Config();
@@ -65,7 +70,7 @@ class Client extends ClientRequest implements ClientInterface {
   * @param string $option
   * @return string $this->config
   */
-  protected function getConfig(string $option)
+  public function getConfig(string $option)
   {
 
     if (isset($this->config[$option])) {
