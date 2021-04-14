@@ -1,18 +1,9 @@
 Gist Analytics API Connection
 =========================
 
-Usage
---------
+# Gist Analytics Client
 
-
-
-Features
---------
-
-
-# Foobar
-
-Foobar is a Python library for dealing with word pluralization.
+The client class interacts with the Gist Analytics Platform to get and set data
 
 ## Installation
 
