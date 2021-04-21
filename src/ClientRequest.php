@@ -34,6 +34,9 @@ class ClientRequest implements ClientRequestInterface {
 
     $this->guzzle = new GuzzleClient([
         'base_uri' => $this->config['base_uri'],
+        'headers' => [
+          'Authorization' => $this->config['api_key']
+        ]
     ]);
 
   }
@@ -104,14 +107,17 @@ class ClientRequest implements ClientRequestInterface {
 
   }
 
+
   public function createRequest($requestType)
   {
 
+    // Form the base query
     $this->query = [
       'params' => [],
-      'url'    => $this->config['base_uri'],
+      'url'    => "/events.json",
       'type'   => $requestType === "insert" ? "POST" : "GET"
     ];
+
 
     return $this;
 
@@ -180,6 +186,7 @@ class ClientRequest implements ClientRequestInterface {
     return $this;
 
   }
+
 
 
 

@@ -7,7 +7,7 @@ The client class interacts with the Gist Analytics Platform to get and set data
 Install using composer
 
 ```bash
-composer require gist/analytics;
+composer require gist/analytics
 ```
 
 ## Usage
@@ -18,9 +18,9 @@ Register your application, and make note of the Access token generated. This
 token will only be displayed once, so make sure to save the record of it.
 
 ```php
-use Gist\Analtics;
+use Gist\Analytics;
 
-$client = new Analtics\Client([
+$client = new Analytics\Client([
   'api_key' => 'Your API key'
 ]);
 
