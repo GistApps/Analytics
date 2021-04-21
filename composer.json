@@ -2,7 +2,7 @@
     "name": "gist/analytics",
     "description": "Connect to the Gist Analytics API",
     "keywords": ["analytics", "gist", "api"],
-    "license": "DBAD",
+    "license": "MIT",
     "authors": [
         {
             "name": "Zac Fair",
@@ -11,7 +11,7 @@
     ],
     "type": "project",
     "require": {
-		    "php": ">=7.4 | >8",
+		    "php": ">=7.3 | >8",
         "guzzlehttp/guzzle": "^6.5"
     },
 	  "require-dev": {
