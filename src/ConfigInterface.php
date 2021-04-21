@@ -15,7 +15,7 @@ interface ConfigInterface
      * Add the api key to the lookup request
      * "apiKey"
      *
-     * @param String $apiKey
+     * @param String $api_key
      *
      * @return Config
      */
@@ -25,8 +25,6 @@ interface ConfigInterface
     /**
      * Add the api key to the lookup request
      * "sandbox"
-     *
-     * @param String $sandbox
      *
      * @return Config
      */

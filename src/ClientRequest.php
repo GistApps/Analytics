@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Excpetion\GuzzleException;
-
+use GuzzleHttp\Exception\TransferException;
 /**
 *  Analytics Client Request class
 *
@@ -18,10 +18,10 @@ use GuzzleHttp\Excpetion\GuzzleException;
 class ClientRequest implements ClientRequestInterface {
 
   /** @var Array $query Array of data used to make the http request */
-  private $query;
+  public $query;
 
   /** @var GuzzleClient The guzzle http client used to make HTTP requests */
-  private $guzzle;
+  public $guzzle;
 
   /**
   * Set up the Guzzle Http Client
@@ -36,7 +36,8 @@ class ClientRequest implements ClientRequestInterface {
         'base_uri' => $this->config['base_uri'],
         'headers' => [
           'Authorization' => $this->config['api_key']
-        ]
+        ],
+        'timeout' => 1
     ]);
 
   }
@@ -56,19 +57,44 @@ class ClientRequest implements ClientRequestInterface {
 
     $response = null;
 
+
     try {
 
-      // Create a PSR-7 request object and send
-      $httpRequest = $this->guzzle->request($this->query['type'], $this->query['url'], $this->query['params']);
+      if ($this->query['type'] === "POST") {
+
+        $options = [
+          'json' => $this->query['params']
+        ];
+        // Create a PSR-7 request object and send
+        $httpRequest = $this->guzzle->post($this->query['url'], $options);
+
+      } else {
+
+        // Create a PSR-7 request object and send
+        $httpRequest = $this->guzzle->request($this->query['type'], $this->query['url'], $this->query['params']);
+
+
+      }
 
       $response    = json_decode($httpRequest->getBody(), true);
 
     } catch(ClientException $e) {
 
-      $response = [
-        'error' => true,
-        'message' => $e->getMessage(),
-      ];
+      if ($e->getCode() == 401) {
+
+        $response = [
+          'error' => true,
+          'message' => "Invalid API key. Please check the API docs for information on retrieving the correct API key.",
+        ];
+
+      } else {
+
+        $response = [
+          'error' => true,
+          'message' => $e->getMessage(),
+        ];
+
+      }
 
     } catch(RequestException $e) {
 
@@ -78,6 +104,13 @@ class ClientRequest implements ClientRequestInterface {
       ];
 
     } catch(GuzzleException $e) {
+
+      $response = [
+        'error' => true,
+        'message' => $e->getMessage(),
+      ];
+
+    } catch(TransferException $e) {
 
       $response = [
         'error' => true,
@@ -95,13 +128,7 @@ class ClientRequest implements ClientRequestInterface {
       ];
 
     }
-    //
-    // if (self::PRINT_REQUEST === true) {
-    //   echo "<pre><code>";
-    //   echo json_encode($response, JSON_PRETTY_PRINT);
-    //   echo "</code></pre>";
-    //   echo "<br/>";
-    // }
+
     // Return the json
     return $response;
 
@@ -114,7 +141,7 @@ class ClientRequest implements ClientRequestInterface {
     // Form the base query
     $this->query = [
       'params' => [],
-      'url'    => "/events.json",
+      'url'    => "/api/events.json",
       'type'   => $requestType === "insert" ? "POST" : "GET"
     ];
 
