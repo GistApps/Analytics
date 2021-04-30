@@ -37,7 +37,7 @@ class ClientRequest implements ClientRequestInterface {
         'headers' => [
           'Authorization' => $this->config['api_key']
         ],
-        'timeout' => 1
+        'timeout' => 3
     ]);
 
   }
@@ -70,9 +70,12 @@ class ClientRequest implements ClientRequestInterface {
 
       } else {
 
-        // Create a PSR-7 request object and send
-        $httpRequest = $this->guzzle->request($this->query['type'], $this->query['url'], $this->query['params']);
+        $options = [
+          'query' => $this->query['params']
+        ];
 
+        // Create a PSR-7 request object and send
+        $httpRequest = $this->guzzle->request($this->query['type'], $this->query['url'], $options);
 
       }
 

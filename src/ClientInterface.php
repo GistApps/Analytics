@@ -27,7 +27,7 @@ interface ClientInterface
   * @return string $this->config
   */
   function getConfig(string $option);
-  
+
   /**
   * Query method
   *
@@ -46,7 +46,7 @@ interface ClientInterface
   *
   * @return array
   */
-  public function query($name, $startDate, $endDate, $query = [], $meta = [], $format = "default");
+  public function query($name, $startDate, $endDate, $query, $meta, $format);
 
   /**
   * Insert method

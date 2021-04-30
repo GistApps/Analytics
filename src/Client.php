@@ -97,7 +97,7 @@ class Client extends ClientRequest implements ClientInterface {
   *
   * @return array
   */
-  public function query($name, $startDate, $endDate, $query = [], $meta = [], $format = "default") {
+  public function query($name, $startDate, $endDate, $query, $meta, $format) {
 
     // Get the request according the the endpoint.
     $req = $this->createRequest("query");

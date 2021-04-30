@@ -12,7 +12,7 @@ class Config implements ConfigInterface
 
   const APP_VERSION    = "1.0.0";
 
-  const PRODUCTION_URL = "http://analytics.gist-apps.com";
+  const PRODUCTION_URL = "https://analytics.gist-apps.com";
 
   const DEVELOPMENT_URL = "https://localhost:8000";
 
