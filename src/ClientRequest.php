@@ -37,7 +37,7 @@ class ClientRequest implements ClientRequestInterface {
         'headers' => [
           'Authorization' => $this->config['api_key']
         ],
-        'timeout' => 20
+        'timeout' => 180
     ]);
 
   }

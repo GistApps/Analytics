@@ -10,7 +10,7 @@ class Config implements ConfigInterface
   /** @var array Default request options */
   private $config;
 
-  const APP_VERSION    = "1.0.0";
+  const APP_VERSION    = "1.0.1";
 
   const PRODUCTION_URL = "https://analytics.gist-apps.com";
 
