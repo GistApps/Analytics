@@ -87,6 +87,7 @@ class ClientRequest implements ClientRequestInterface {
 
         $response = [
           'error' => true,
+          'type' => "NotFoundException",
           'message' => "Invalid API key. Please check the API docs for information on retrieving the correct API key.",
         ];
 
@@ -94,6 +95,7 @@ class ClientRequest implements ClientRequestInterface {
 
         $response = [
           'error' => true,
+          'type' => "ClientException",
           'message' => $e->getMessage(),
         ];
 
@@ -103,6 +105,7 @@ class ClientRequest implements ClientRequestInterface {
 
       $response = [
         'error' => true,
+        'type' => "RequestException",
         'message' => $e->getMessage(),
       ];
 
@@ -110,6 +113,7 @@ class ClientRequest implements ClientRequestInterface {
 
       $response = [
         'error' => true,
+        'type' => "GuzzleException",
         'message' => $e->getMessage(),
       ];
 
@@ -117,6 +121,7 @@ class ClientRequest implements ClientRequestInterface {
 
       $response = [
         'error' => true,
+        'type' => "TransferException",
         'message' => $e->getMessage(),
       ];
 
